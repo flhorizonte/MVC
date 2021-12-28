@@ -2,15 +2,21 @@
 
 namespace App;
 
+use App\Modules\Auth;
 use App\Modules\Http;
 
 class Kernel
 {
 
     use Http;
+    use Auth;
 
     private $defaultViewController = 'AppController';
     private $defaultView = 'login';
+
+    public function __construct()
+    {
+    }
 
     public function run()
     {
@@ -29,7 +35,11 @@ class Kernel
 
         [$view, $controller] = $this->getControllerView();
 
-        if ($view !== null && $controller !== null) {
+        if (
+            $view !== null &&
+            $controller !== null &&
+            $this->verifyAuthSession()
+        ) {
             $pathController = "\\App\\Http\\Controllers\\{$controller}";
             if (class_exists($pathController)) {
                 if (method_exists($pathController, $view)) {

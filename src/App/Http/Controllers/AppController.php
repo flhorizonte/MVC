@@ -6,8 +6,8 @@ use App\Modules\Controller;
 
 class AppController extends Controller {
 
-    public function index() {
-        return $this->view('home');
+    public function pesquisa() {
+        return $this->view('pesquisa');
     }
 
     public function cadastro() {

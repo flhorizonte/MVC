@@ -8,3 +8,7 @@
         <img id="logo-santri" class="w3-right w3-margin-top" src="src/App/Resources/static/imagens/logo_santri.svg"/>
       </a>
 </div>
+
+<script>
+  
+</script>

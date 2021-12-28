@@ -23,8 +23,6 @@ class Database
             return $pdo;
         } catch (PDOException $error) {
             echo $error->getMessage();
-        } finally {
-            $pdo=null;
-        }
+        } 
     }
 }

@@ -40,10 +40,7 @@
 
   </head>
   <body>
-    <script src="src/App/Resources/static/js/jquery.js"></script>
-
-    <?php
-        $kernel->view();
-    ?>
+     
+    <?php $kernel->view();?>
   </body>
 </html>
