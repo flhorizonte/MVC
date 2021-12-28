@@ -1,14 +1,40 @@
-web:
-    image: nginx:latest
-    ports:
-        - "8080:80" 
-    volumes:
-        - .:/var/www
-        - ./nginx/conf:/etc/nginx/conf.d
-    links:
-        - php
-    
-php:
-    image: php:7-fpm
-    volumes:
-        - .:/var/www
+networks:
+    frame-network:
+        driver: bridge
+
+services:
+    framework:
+        build: 
+            context: ./
+            dockerfile: Dockerfile
+        container_name: framework
+        image: php:8.0.3-fpm-buster
+        restart: unless-stopped
+        tty: true
+        working_dir: /var/www
+        volumes: 
+            - .:/var/www
+        networks:
+            - frame-network
+
+    web:
+        image: nginx:latest
+        ports:
+            - "8080:80" 
+        volumes:
+            - .:/var/www
+            - ./nginx/conf:/etc/nginx/conf.d
+        networks:
+            - frame-network
+
+    db:
+        image: mysql:5.7
+        container_name: mysql-tests
+        ports:
+            - "3306:3306"
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: teste
+        networks:
+            - frame-network
