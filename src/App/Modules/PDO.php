@@ -9,7 +9,6 @@ trait PDO {
         foreach($filter as $field => $value) {
             $fields[] = "{$field} = :{$field}";
         }
-        
         return implode(" AND ", $fields);
     }
 
@@ -18,7 +17,6 @@ trait PDO {
             unset($filter[$field]);
             $filter[":{$field}"] = $value;
         }
-
         return $filter;
     }
 }

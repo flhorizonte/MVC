@@ -40,7 +40,21 @@
 
   </head>
   <body>
-     
-    <?php $kernel->view();?>
+    <script src="src/App/Resources/static/js/jquery.js"></script>
+
+    <div class="app">
+      <div class="header">
+      <?php
+      if(isset($_SESSION['auth'])):
+      ?>
+      <div>
+        <button type="button" onclick="location.href='http://localhost:8080/?method=logout&controller=LoginController'">Sair</button>
+      </div>
+      <?php endif; ?>
+      </div>
+    
+      <?php $kernel->view();?>
+    </div>
+    
   </body>
 </html>

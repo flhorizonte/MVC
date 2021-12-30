@@ -7,3 +7,35 @@
     background: #9c1d1c !important;
     border-radius: 5px;
 }
+
+.app {
+  padding: 25px;
+  position: relative;
+}
+
+.header {
+  display: flex;
+  flex-direction: row-reverse;
+  padding-right: 25px;
+}
+
+.logout-btn {
+  background-color: #9c1d1c;
+  border-radius: 5px;
+  border-style: none;
+  color: white;
+}
+
+.lista_usuarios {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.div-form {
+
+}
+
+.table-pesquisa {
+  margin-top: 50px;
+}
